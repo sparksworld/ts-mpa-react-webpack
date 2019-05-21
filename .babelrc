@@ -1,0 +1,19 @@
+{
+    "presets": [
+        [
+            "@babel/env",
+            {
+                "targets": {
+                    "browsers": [
+                        "iOS >= 7",
+                        "Android >= 4.1"
+                    ]
+                }
+            }
+        ],
+        "@babel/react"
+    ],
+    "plugins": [
+        "@babel/transform-runtime"
+    ]
+}
