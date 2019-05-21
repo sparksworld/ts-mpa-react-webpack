@@ -16,7 +16,9 @@
 `2019-05-21 13:00`
 - 添加命令行控制编译和输出目录 
     - 使用```cross-var```做平台之间的兼容处理
-    - 使用```dt=<pages目录下的文件名> npm run dev/build```,即可按需`编译/打包`运行
+    - 使用```dt=<pages目录下的文件名> npm run dev/build```,即可按需`编译/打包`运行 
+
+    ----
     > 如： ```dt=detail-page npm run dev``` 
 
     > mac系统直接全量编译，只需要运行```npm run dev/build```  
