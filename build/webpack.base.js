@@ -15,7 +15,7 @@ glob.sync(path.resolve(__dirname, '../src/pages/*/main.{js,jsx,tsx}')).forEach(_
         template: path.resolve(__dirname, `../src/pages/${name}/index.pug`),
         filename: `${name}.html`,
         // inject: 'head', //js放到头部
-        chunks: [name, 'vendor', 'common', 'react'] //指定页面加载的entry
+        chunks: [name, 'vendor', 'common'] //指定页面加载的entry
     }))
     entry[name] = _path
 })
