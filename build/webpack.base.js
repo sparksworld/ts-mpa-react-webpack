@@ -5,22 +5,20 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const path = require('path')
 const glob = require('glob')
 
-
 let entry = {}
 let plugins = []
 
-glob.sync(path.resolve(__dirname, '../src/pages/*/main.{js,jsx,tsx}')).forEach(_path => {
-    let name = _path.match(/\/pages\/\S+\//)[0].split('/')[2];
-    plugins.push(new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, `../src/pages/${name}/index.pug`),
-        filename: `${name}.html`,
-        // inject: 'head', //js放到头部
-        chunks: [name, 'vendor', 'common'] //指定页面加载的entry
-    }))
-    entry[name] = _path
-})
-
 module.exports = function(env) {
+    glob.sync(path.resolve(__dirname, `../src/pages/${env.interface||'*'}/main.{js,jsx,tsx}`)).forEach(_path => {
+        let name = _path.match(/\/pages\/\S+\//)[0].split('/')[2];
+        plugins.push(new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, `../src/pages/${name}/index.pug`),
+            filename: `${name}.html`,
+            // inject: 'head', //js放到头部
+            chunks: [name, 'vendor', 'common'] //指定页面加载的entry
+        }))
+        entry[name] = _path
+    })
     return {
         entry: entry,
         module: {
@@ -117,7 +115,7 @@ module.exports = function(env) {
             new webpack.BannerPlugin(`Spark created at ${new Date()} \n`),
             new CopyWebpackPlugin([{
                 from: path.resolve(__dirname, '../static'),
-                to: path.resolve(__dirname, '../dist/static')
+                to: path.resolve(__dirname, `../${env.interface || 'dist'}/static`)
             }]),
             new MiniCssExtractPlugin({
                 filename: "css/[name].[hash:8].css",

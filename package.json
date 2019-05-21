@@ -5,8 +5,8 @@
     "main": "./src/pages/main.*",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "cross-var webpack-dev-server --config build/webpack.dev.js --env.interface=$interface",
-        "build": "cross-var webpack --config build/webpack.prod.js --colors --env.interface=$interface"
+        "dev": "cross-var webpack-dev-server --config build/webpack.dev.js --env.interface=$d",
+        "build": "cross-var webpack --config build/webpack.prod.js --colors --env.interface=$d"
     },
     "keywords": [
         "详情页",

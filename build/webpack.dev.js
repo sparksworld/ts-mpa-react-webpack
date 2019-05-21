@@ -11,7 +11,7 @@ module.exports = function(env) {
         output: {
             filename: 'js/[name].[hash:8].js',
             publicPath: '/',
-            path: path.resolve(__dirname, '../dist'),
+            path: path.resolve(__dirname, `../${env.interface || 'dist'}`),
             chunkFilename: 'js/[name].[chunkhash:8].js'
         },
         
@@ -21,7 +21,7 @@ module.exports = function(env) {
         },
         devServer: {
             host: 'localhost',
-            contentBase: path.resolve(__dirname, '../dist'),
+            contentBase: path.resolve(__dirname, `../${env.interface || 'dist'}`),
             port: 8080,
             quiet: true,
             open: true,

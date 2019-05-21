@@ -12,7 +12,7 @@ module.exports = function(env) {
         output: {
             filename: 'js/[name].[hash:8].js',
             publicPath: './',
-            path: path.resolve(__dirname, '../dist'),
+            path: path.resolve(__dirname, `../${env.interface || 'dist'}`),
             chunkFilename: 'js/[name].[chunkhash:8].js',
             /* 输出umd模块 */
             // library: "friendly",
@@ -23,17 +23,18 @@ module.exports = function(env) {
             minimizer: [
                 // 自定义js优化配置，将会覆盖默认配置
                 new UglifyJsPlugin({
-                    exclude: /\.min\.js$/, // 过滤掉以".min.js"结尾的文件，我们认为这个后缀本身就是已经压缩好的代码，没必要进行二次压缩
+                    exclude: /\.min\.js$/, // 过滤掉以".min.js"结尾的文件
                     cache: true,
                     parallel: true, // 开启并行压缩，充分利用cpu
                     sourceMap: false,
+                    extractComments: false, // 是否提取注释到单独的文件
                     uglifyOptions: {
                         compress: {
                             unused: true,
                             drop_debugger: true
                         },
                         output: {
-                            comments: true
+                            comments: /spark/gi
                         }
                     }
                 }),
