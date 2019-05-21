@@ -26,7 +26,8 @@
     > windows系统可能需要`dt="" npm run dev/build`(这也许并不完美，后续解决，因为我自用的是mac)
 
 `2019-05-21 22:04`
-- 添加环境变量，区分生产和编译环境
+- 添加环境变量，区分生产和编译环境 
+
     - 利用webpack函数方程获取mode，传递变量给pug模板，实现生产和编译的区分
     ----
     > 在```index.pug```中，获取编译环境请用`htmlWebpackPlugin.options.mode`
