@@ -1,0 +1,4 @@
+*.css linguist-language=css
+*.scss linguist-language=scss
+*.js linguist-language=js
+*.html linguist-language=html
