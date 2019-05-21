@@ -9,7 +9,6 @@ let entry = {}
 let plugins = []
 
 module.exports = function(env, argv) {
-    console.log(argv.mode)
     glob.sync(path.resolve(__dirname, `../src/pages/${env.interface||'*'}/main.{js,jsx,tsx}`)).forEach(_path => {
         let name = _path.match(/\/pages\/\S+\//)[0].split('/')[2];
         plugins.push(new HtmlWebpackPlugin({
