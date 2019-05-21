@@ -6,8 +6,8 @@ const ClearWebpackPlugin = require('clean-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-module.exports = function(env) {
-    return merge(common(env), {
+module.exports = function(env, argv) {
+    return merge(common(env, argv), {
         mode: 'production',
         output: {
             filename: 'js/[name].[hash:8].js',
@@ -15,7 +15,7 @@ module.exports = function(env) {
             path: path.resolve(__dirname, `../${env.interface || 'dist'}`),
             chunkFilename: 'js/[name].[chunkhash:8].js',
             /* 输出umd模块 */
-            // library: "friendly",
+            // library: "test",
             // libraryTarget: "umd"
         },
         optimization: {
@@ -56,7 +56,9 @@ module.exports = function(env) {
         },
         plugins: [
             new ClearWebpackPlugin(),
-
+            // new webpack.DefinePlugin({
+            //     'process.env.NODE_ENV': '"production"'
+            // }),
             new ProgressBarPlugin({
                 format: 'build [:bar] :percent (:elapsed seconds)',
                 clear: true,

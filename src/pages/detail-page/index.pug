@@ -4,5 +4,11 @@ block title
     title 详情页
 
 block body
-    body
-        #app
+    #app
+block script
+    if htmlWebpackPlugin.options.mode == 'development'
+        script(crossorigin, src="//unpkg.com/react@16/umd/react.development.js")
+        script(crossorigin, src="//unpkg.com/react-dom@16/umd/react-dom.development.js")
+    else 
+        script(crossorigin, src="//unpkg.com/react@16/umd/react.production.min.js")
+        script(crossorigin, src="//unpkg.com/react-dom@16/umd/react-dom.production.min.js")

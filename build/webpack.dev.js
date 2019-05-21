@@ -5,16 +5,16 @@ const merge = require('webpack-merge')
 const Dashboard = require('webpack-dashboard');
 const DashboardPlugin = require('webpack-dashboard/plugin')
 const dashboard = new Dashboard()
-module.exports = function(env) {
-    return merge(common(env), {
+module.exports = function(env, argv) {
+    return merge(common(env, argv), {
         mode: 'development',
         output: {
             filename: 'js/[name].[hash:8].js',
             publicPath: '/',
             path: path.resolve(__dirname, `../${env.interface || 'dist'}`),
-            chunkFilename: 'js/[name].[chunkhash:8].js'
+            chunkFilename: 'js/[name].[chunkhash:8].js',
         },
-        
+
         devtool: 'inline-source-map',
         optimization: {
             minimize: false
@@ -29,6 +29,9 @@ module.exports = function(env) {
         },
 
         plugins: [
+            // new webpack.DefinePlugin({
+            //     'process.env.NODE_ENV': '"development"'
+            // }),
             new webpack.HotModuleReplacementPlugin(),
             new DashboardPlugin(dashboard.setData)
         ]

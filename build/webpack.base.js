@@ -8,14 +8,16 @@ const glob = require('glob')
 let entry = {}
 let plugins = []
 
-module.exports = function(env) {
+module.exports = function(env, argv) {
+    console.log(argv.mode)
     glob.sync(path.resolve(__dirname, `../src/pages/${env.interface||'*'}/main.{js,jsx,tsx}`)).forEach(_path => {
         let name = _path.match(/\/pages\/\S+\//)[0].split('/')[2];
         plugins.push(new HtmlWebpackPlugin({
             template: path.resolve(__dirname, `../src/pages/${name}/index.pug`),
             filename: `${name}.html`,
+            mode: argv.mode,
             // inject: 'head', //js放到头部
-            chunks: [name, 'vendor', 'common'] //指定页面加载的entry
+            chunks: [name, 'vendor', 'common'] 
         }))
         entry[name] = _path
     })
@@ -109,7 +111,10 @@ module.exports = function(env) {
                 '~': path.resolve(__dirname, '../src')
             }
         },
-
+        externals: {
+            "react": "React",
+            "react-dom": "ReactDOM"
+        },
 
         plugins: [
             new webpack.BannerPlugin(`Spark created at ${new Date()} \n`),
