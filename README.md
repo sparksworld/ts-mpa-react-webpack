@@ -16,17 +16,20 @@
 `2019-05-21 13:00`
 - 添加命令行控制编译和输出目录 
     - 使用```cross-var```做平台之间的兼容处理
-    - 使用```dt=<pages目录下的文件名> npm run dev/build```,即可按需`编译/打包`运行 
+    - 使用`dt=<pages目录下的文件名> npm run dev/build`,即可按需`编译/打包`运行 
 
     ----
-    > 如： ```dt=detail-page npm run dev``` 
+    > 如： `dt=detail-page npm run dev`
 
-    > mac系统直接全量编译，只需要运行```npm run dev/build```  
+    > mac系统直接全量编译，只需要运行`npm run dev/build` 
 
-    > windows系统可能需要```dt="" npm run dev/build```(这也许并不完美，后续解决，因为我自用的是mac)
+    > windows系统可能需要`dt="" npm run dev/build`(这也许并不完美，后续解决，因为我自用的是mac)
 
 `2019-05-21 22:04`
 - 添加环境变量，区分生产和编译环境
+    - 利用webpack函数方程获取mode，传递变量给pug模板，实现生产和编译的区分
+    ----
+    > 在```index.pug```中，获取编译环境请用`htmlWebpackPlugin.options.mode`
 
 
 ### 未完成功能
