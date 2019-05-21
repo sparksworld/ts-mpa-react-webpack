@@ -1,8 +1,8 @@
 {
-    "name": "webprizetoshare",
+    "name": "ts-mpa-react-webpack",
     "version": "1.0.0",
     "description": "",
-    "main": "src",
+    "main": "./src/pages/main.*",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "cross-var webpack-dev-server --config build/webpack.dev.js --env.interface=$interface",
