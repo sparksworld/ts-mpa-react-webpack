@@ -1,5 +1,5 @@
 # ts-mpa-react-webpack
-支持react + ts语法的多页面打包工具(当然不用react + tsx,同样可以用)
+使用webpack4构建, 支持react + ts语法的多页面打包工具(当然不用react + tsx,同样可以用)
 
 
 ### 已完成功能
