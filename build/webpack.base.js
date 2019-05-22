@@ -16,7 +16,7 @@ module.exports = function(env, argv) {
             filename: `${name}.html`,
             mode: argv.mode,
             // inject: 'head', //js放到头部
-            chunks: [name, 'vendor', 'common'] 
+            chunks: [name, 'vendor', 'common']
         }))
         entry[name] = _path
     })
@@ -69,7 +69,7 @@ module.exports = function(env, argv) {
                 }, {
                     test: /\.pug$/,
                     use: [{
-                        loader: 'pug-loader'
+                        loader: "pug-loader",
                     }]
                 }, {
                     test: /\.(png|jpe?g|gif|svg|webp)$/i,
@@ -79,6 +79,15 @@ module.exports = function(env, argv) {
                             limit: 8192,
                             name: 'image/[name].[hash:8].[ext]',
                             fallback: 'file-loader'
+                        }
+                    }]
+                }, {
+                    test: /\.(eot|woff2?|ttf|svg)$/,
+                    use: [{
+                        loader: "url-loader",
+                        options: {
+                            limit: 5000, // fonts file size <= 5KB, use 'base64'; else, output svg file
+                            name: "fonts/[name].[hash:8].[ext]"
                         }
                     }]
                 }
