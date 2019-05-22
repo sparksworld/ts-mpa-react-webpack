@@ -5,6 +5,7 @@ const merge = require('webpack-merge')
 const Dashboard = require('webpack-dashboard');
 const DashboardPlugin = require('webpack-dashboard/plugin')
 const dashboard = new Dashboard()
+const ip = require('ip').address()
 module.exports = function(env, argv) {
     return merge(common(env, argv), {
         mode: 'development',
@@ -20,11 +21,11 @@ module.exports = function(env, argv) {
             minimize: false
         },
         devServer: {
-            host: 'localhost',
+            host: ip,
             contentBase: path.resolve(__dirname, `../${argv.dt || 'dist'}`),
-            port: 8080,
+            port: argv.PORT || 8080,
             quiet: true,
-            open: false,
+            open: true,
             hot: true
         },
 

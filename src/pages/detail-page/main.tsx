@@ -1,45 +1,49 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import TodoItem from './components/todo-item'
+import api from './api'
+//http://www.wukai.me/simplest-react-todolist/
 // // @ts-ignore
 // // import test from "~/lib/test"
 import './assets/sass/style.scss'
 class App extends Component<any, any> {
-    protected arr: Array<any> = ['aaa']
     constructor(props: any) {
         super(props);
         this.state = {
-            t: 2,
-            b: 2
+            tasks: [{
+                id: 1,
+                taskName: '写日报'
+            }, {
+                id: 2,
+                taskName: '吃饭'
+            }, {
+                id: 3,
+                taskName: '睡觉'
+            }, {
+                id: 4,
+                taskName: '打豆豆'
+            }]
         }
     }
     public render() {
+        const list: object[] =  this.state.tasks.map((item: {
+            id: number,
+            taskName: string
+        }) => (
+            <TodoItem key={item.id} taskname={item.taskName}></TodoItem>
+        ))
         return (
             <div>
-                {this.state.t}
+                <div className="todo_box">
+                    <ul>{list}</ul>
+                </div>
             </div>
         )
     }
     public componentDidMount() {
-        console.log(this.arr as number[])
-        setTimeout((): void => {
-            this.setState({
-                t: 1
-            })
-        }, 2000)
-
-        // console.log(this.props)
-
     }
 }
 
-// class HelloMessage extends Component<any, any> {
-//     public render() {
-//         return <h1>{this.props.test}</h1>;
-//     }
-//     public componentDidMount() {
-//         // console.log(this.props)
-//     }
-// }
 
 ReactDOM.render(
     <App a="1" />,

@@ -114,7 +114,7 @@ module.exports = function(env, argv) {
             }
         },
         resolve: {
-            extensions: ['.ts', '.tsx', '.jsx', '.js', '.json', '.scss'],
+            extensions: ['.ts', '.tsx', '.jsx', '.js', '.json', '.scss', 'css'],
             alias: {
                 '~': path.resolve(__dirname, '../src')
             }

@@ -2,7 +2,7 @@
     "name": "ts-mpa-react-webpack",
     "version": "1.0.0",
     "description": "",
-    "main": "./src/pages/main.*",
+    "main": "./src",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "cross-var webpack-dev-server --mode development --config build/webpack.dev.js",
@@ -55,6 +55,8 @@
     "dependencies": {
         "@babel/runtime": "^7.4.4",
         "@types/react": "^16.8.17",
-        "@types/react-dom": "^16.8.4"
+        "@types/react-dom": "^16.8.4",
+        "axios": "^0.18.0",
+        "spark-deep": "^1.0.3"
     }
 }
