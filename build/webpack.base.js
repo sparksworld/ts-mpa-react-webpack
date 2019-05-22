@@ -9,7 +9,7 @@ let entry = {}
 let plugins = []
 
 module.exports = function(env, argv) {
-    glob.sync(path.resolve(__dirname, `../src/pages/${env.interface||'*'}/main.{js,jsx,tsx}`)).forEach(_path => {
+    glob.sync(path.resolve(__dirname, `../src/pages/${argv.dt||'*'}/main.{js,jsx,tsx}`)).forEach(_path => {
         let name = _path.match(/\/pages\/\S+\//)[0].split('/')[2];
         plugins.push(new HtmlWebpackPlugin({
             template: path.resolve(__dirname, `../src/pages/${name}/index.pug`),
@@ -119,7 +119,7 @@ module.exports = function(env, argv) {
             new webpack.BannerPlugin(`Spark created at ${new Date()} \n`),
             new CopyWebpackPlugin([{
                 from: path.resolve(__dirname, '../static'),
-                to: path.resolve(__dirname, `../${env.interface || 'dist'}/static`)
+                to: path.resolve(__dirname, `../${argv.dt || 'dist'}/static`)
             }]),
             new MiniCssExtractPlugin({
                 filename: "css/[name].[hash:8].css",

@@ -14,16 +14,15 @@
 - 支持静态资源文件夹 
 
 `2019-05-21 13:00`
-- 添加命令行控制编译和输出目录 
+- 添加命令行控制编译和输出目录  
+
     - 使用```cross-var```做平台之间的兼容处理
-    - 使用`dt=<pages目录下的文件名> npm run dev/build`,即可按需`编译/打包`运行 
+    - 使用`npm run dev/build -- --dt <pages目录下的文件名> `,即可按需`编译/打包`运行 
 
     ----
-    > 如： `dt=detail-page npm run dev`
+    > 如： `npm run dev -- --dt detail-page` 
 
-    > mac系统直接全量编译，只需要运行`npm run dev/build` 
-
-    > windows系统可能需要`dt="" npm run dev/build`(这也许并不完美，后续解决，因为我自用的是mac)
+    > 如果不传递参数，默认全量`编译/打包`
 
 `2019-05-21 22:04`
 - 添加环境变量，区分生产和编译环境 

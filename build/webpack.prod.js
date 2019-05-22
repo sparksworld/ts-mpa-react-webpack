@@ -12,7 +12,7 @@ module.exports = function(env, argv) {
         output: {
             filename: 'js/[name].[hash:8].js',
             publicPath: './',
-            path: path.resolve(__dirname, `../${env.interface || 'dist'}`),
+            path: path.resolve(__dirname, `../${argv.dt || 'dist'}`),
             chunkFilename: 'js/[name].[chunkhash:8].js',
             /* 输出umd模块 */
             // library: "test",
