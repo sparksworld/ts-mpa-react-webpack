@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import TodoItem from './components/todo-item'
-import api from './api'
+import TodoStatus from './components/todo-status'
+import TodoForm from './components/todo-form'
+// import api from './api'
 //http://www.wukai.me/simplest-react-todolist/
 // // @ts-ignore
 // // import test from "~/lib/test"
@@ -12,31 +14,107 @@ class App extends Component<any, any> {
         this.state = {
             tasks: [{
                 id: 1,
-                taskName: '写日报'
+                taskName: '写日报',
+                isChecked: false,
+                isEdit: false
             }, {
                 id: 2,
-                taskName: '吃饭'
+                taskName: '吃饭',
+                isChecked: false,
+                isEdit: false
             }, {
                 id: 3,
-                taskName: '睡觉'
+                taskName: '睡觉',
+                isChecked: false,
+                isEdit: false
             }, {
                 id: 4,
-                taskName: '打豆豆'
+                taskName: '打豆豆',
+                isChecked: false,
+                isEdit: false
             }]
         }
     }
+    private addEvent = (p) => {
+        // console.log(p)
+        let _tasks = this.state.tasks
+        if (p.taskName) {
+            _tasks.push({
+                id: new Date().getTime(),
+                taskName: p.taskName,
+                isChecked: false,
+                isEdit: false
+            })
+            this.setState({
+                tasks: _tasks
+            })
+        }
+
+    }
+    protected handleChange(_index: number, _type: string, _content?: string) {
+        let runTask = {
+            delete: this.setState.bind(this, ({ tasks }) => {
+                tasks.splice(_index, 1)
+                return {
+                    tasks: tasks
+                }
+            }),
+            active: this.setState.bind(this, (({ tasks }) => {
+                return tasks.map((item, i) => {
+                    if (i == _index) {
+                        item.isChecked = !item.isChecked
+                        if (item.isEdit) {
+                            item.isEdit = !item.isEdit
+                        }
+                    } else {
+                        item.isEdit = false
+                    }
+                })
+            })),
+            edit: this.setState.bind(this, ({ tasks }) => {
+                return tasks.map((item, i) => {
+                    if (i == _index) {
+                        item.isEdit = !item.isEdit
+                    } else {
+                        item.isEdit = false
+                    }
+                })
+            }),
+            sure: this.setState.bind(this, ({ tasks }) => {
+                return tasks.map((item, i) => {
+                    if (i == _index) {
+                        item.taskName = _content
+                        item.isEdit = !item.isEdit
+                    }
+                })
+            })
+        }
+        runTask[_type]()
+    }
+
     public render() {
-        const list: object[] =  this.state.tasks.map((item: {
-            id: number,
-            taskName: string
-        }) => (
-            <TodoItem key={item.id} taskname={item.taskName}></TodoItem>
-        ))
         return (
-            <div>
+            <div className="todo-list">
+                <TodoStatus allTask={this.state.tasks}></TodoStatus>
                 <div className="todo_box">
-                    <ul>{list}</ul>
+                    <ul>{
+                        this.state.tasks.map((item: {
+                            id: number,
+                            taskName: string,
+                            isChecked: boolean
+                        }, index: number) => (
+                                <TodoItem
+                                    key={item.id}
+                                    taskItem={item}
+                                    index={index}
+                                    stateChange={
+                                        (_index: number, _type: string, _content?: string) => this.handleChange(_index, _type, _content)
+                                    }
+                                ></TodoItem>
+                            ))
+                    }</ul>
                 </div>
+                <TodoForm addEvent={(p) => this.addEvent(p)}></TodoForm>
             </div>
         )
     }
@@ -46,6 +124,6 @@ class App extends Component<any, any> {
 
 
 ReactDOM.render(
-    <App a="1" />,
+    <App />,
     document.querySelector('#app')
 );

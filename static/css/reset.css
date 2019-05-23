@@ -25,6 +25,8 @@ ul  {
     padding: 0;
 }
 html, body {
+    box-sizing: border-box;
+    user-select: none;
     font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
     -webkit-text-size-adjust: 100%;
     font-size: 16px;
@@ -36,17 +38,13 @@ button,
 input,
 select,
 textarea {
+    outline: 0;
     -webkit-tap-highlight-color: transparent
 }
 
 a {
     text-decoration: none
 }
-
-a:active {
-    outline: 0
-}
-
 table {
     border-collapse: collapse;
     border-spacing: 0

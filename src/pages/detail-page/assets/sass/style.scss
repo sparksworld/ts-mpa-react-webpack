@@ -2,27 +2,125 @@
 
 @import '~/styles/app.scss';
 
+body {
+    background: #d3d3d3;
+}
+
 #app {
     max-width: 750px;
     margin: 0 auto;
+
+    .btn {
+        padding: 10px 28px;
+        font-size: 36px;
+        color: #fefefe;
+        background: #969696;
+        &:active {
+            opacity: .7;
+        }
+    }
+
+    .btn-warning {
+        background-color: #f0ad4e;
+        border-color: #eea236;
+    }
+
+    .btn-primary {
+        background-color: #337ab7;
+        border-color: #2e6da4;
+    }
+
     .todo_box {
+        .item-style {
+            background: darkslategrey;
+            text-decoration: line-through;
+        }
+
+        .item-style-active {
+            background: #666;
+        }
+
         li {
             padding: 24px;
             position: relative;
             background: #efefef;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .edit_box {
+                flex: 1;
+                padding: 0 20px;
+                overflow: hidden;
+                word-break: break-all;
+                word-wrap: break-word;
+
+                input[type="text"] {
+                    height: 58px;
+                    width: 100%;
+                    display: block;
+                    font-size: 32px;
+                    color: #666;
+                }
+            }
+
+
             &::after {
                 content: '';
                 width: 100%;
-                height: 1px;/*no*/
+                height: 1px;
+                /*no*/
                 position: absolute;
                 bottom: 0;
                 left: 0;
                 transform: scaleY(0.5);
                 background: #969696;
             }
+
             &:active {
                 opacity: .8;
             }
+        }
+
+    }
+
+    .todo-status {
+        padding: 30px 20px;
+        border-top: 1px solid #333;
+        border-bottom: 1px solid #333;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #333;
+        color: #fff;
+        font-weight: bolder;
+        .appName {
+            font-size: 38px;
+        }
+    }
+
+    .todo-form {
+        display: flex;
+        justify-content: space-around;
+        padding: 20px 24px;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background: #969696;
+        box-sizing: border-box;
+
+        input {
+            flex: 1;
+            padding: 0 16px;
+            font-size: 36px;
+            color: #666;
+        }
+
+        button.add {
+            padding: 16px 40px;
         }
     }
 }
