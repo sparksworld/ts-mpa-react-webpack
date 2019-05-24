@@ -28,6 +28,7 @@ class TodoForm extends Component<any, any> {
                     placeholder='请输入你要做的事项'
                     onChange={this.changeValue}
                     value={this.state.taskName}
+                    onFocus={() => {setTimeout(()=>window.document.body.scrollTop = window.document.body.scrollHeight)}}
                 />
                 <button
                     className="btn btn-primary add"

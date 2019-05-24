@@ -2,19 +2,22 @@
 
 @import '~/styles/app.scss';
 
-body {
+body,
+html {
     background: #d3d3d3;
 }
 
 #app {
     max-width: 750px;
     margin: 0 auto;
+    padding: 120px 0 150px;
 
     .btn {
         padding: 10px 28px;
         font-size: 36px;
         color: #fefefe;
         background: #969696;
+
         &:active {
             opacity: .7;
         }
@@ -30,7 +33,15 @@ body {
         border-color: #2e6da4;
     }
 
+    .todo-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
     .todo_box {
+        flex: 1;
+
         .item-style {
             background: darkslategrey;
             text-decoration: line-through;
@@ -87,6 +98,11 @@ body {
     }
 
     .todo-status {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        box-sizing: border-box;
         padding: 30px 20px;
         border-top: 1px solid #333;
         border-bottom: 1px solid #333;
@@ -98,6 +114,8 @@ body {
         color: #fff;
         font-weight: bolder;
         font-size: 32px;
+        z-index: 10;
+
         .appName {
             font-size: 38px;
         }
@@ -109,8 +127,10 @@ body {
         padding: 20px 24px;
         width: 100%;
         position: fixed;
-        bottom: 0;
         left: 0;
+        bottom: 0;
+        bottom: env(safe-area-inset-bottom);
+        bottom: constant(safe-area-inset-bottom);
         background: #969696;
         box-sizing: border-box;
 
