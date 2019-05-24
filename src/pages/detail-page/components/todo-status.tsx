@@ -3,6 +3,10 @@ import React, { Component } from 'react'
 class TodoStatus extends Component<any, any> {
     constructor(props) {
         super(props)
+        this.state = {
+            author: 'spark',
+            title: 'Spark ToDoList'
+        }
     }
     private computCount(): number {
         return this.props.allTask.filter((item) => {
@@ -12,7 +16,7 @@ class TodoStatus extends Component<any, any> {
     public render() {
         return (
             <div className="todo-status">
-                <div className="appName">spark todo list</div>
+                <div className="appName">{this.state.title}</div>
                 <div>已完成{this.computCount()}/{(this.props.allTask as string).length}</div>
             </div>
         )

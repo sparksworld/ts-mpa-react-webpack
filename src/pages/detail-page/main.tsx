@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom'
 import TodoItem from './components/todo-item'
 import TodoStatus from './components/todo-status'
 import TodoForm from './components/todo-form'
-// import api from './api'
+import api from './api'
 //http://www.wukai.me/simplest-react-todolist/
 // // @ts-ignore
 // // import test from "~/lib/test"
+
+api.getSearchType()
 import './assets/sass/style.scss'
 class App extends Component<any, any> {
     constructor(props: any) {

@@ -11,6 +11,11 @@ class TodoItem extends Component<any, any> {
     private stateChange(i, t, e) {
         e.stopPropagation();
         this.props.stateChange(i, t, this.state.editContent)
+        if(t != 'sure') {
+            this.setState({
+                editContent: this.props.taskItem.taskName
+            })
+        }
     }
     private keyPress(e) {
         e.keyCode === 13 && this.stateChange(this.props.index, 'sure', e)
