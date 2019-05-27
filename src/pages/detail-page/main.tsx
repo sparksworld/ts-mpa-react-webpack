@@ -4,12 +4,18 @@ import TodoItem from './components/todo-item'
 import TodoStatus from './components/todo-status'
 import TodoForm from './components/todo-form'
 import api from './api'
+import './assets/sass/style.scss'
 //http://www.wukai.me/simplest-react-todolist/
 // // @ts-ignore
 // // import test from "~/lib/test"
 
-api.getSearchType()
-import './assets/sass/style.scss'
+declare module 'react' {
+  interface Component {
+    $axios: any
+  }
+}
+// api.getSearchType()
+Component.prototype.$axios = api
 class App extends Component<any, any> {
     constructor(props: any) {
         super(props);

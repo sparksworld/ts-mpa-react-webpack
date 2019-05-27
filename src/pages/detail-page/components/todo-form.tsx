@@ -16,6 +16,7 @@ class TodoForm extends Component<any, any> {
 
     private sureAdd = () => {
         this.props.addEvent(this.state)
+        console.log(this.$axios)
         this.setState({
             taskName: ''
         })
