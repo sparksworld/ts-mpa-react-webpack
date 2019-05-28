@@ -1,0 +1,98 @@
+html,
+body,
+button,
+fieldset,
+h1,
+h2,
+h3,
+h4,
+h5,
+input,
+p,
+select,
+textarea,
+dd,
+dl,
+dt,
+fieldset,
+input,
+li,
+ol,
+td,
+tr,
+ul  {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    box-sizing: border-box;
+    user-select: none;
+    font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+    -webkit-text-size-adjust: 100%;
+    font-size: 16px;
+}
+
+a,
+a:active,
+button,
+input,
+select,
+textarea {
+    outline: 0;
+    -webkit-tap-highlight-color: transparent
+}
+
+a {
+    text-decoration: none
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+button,
+img,
+input {
+
+    border: none
+}
+
+li {
+    list-style: none
+}
+
+img {
+    vertical-align: top;
+    max-width: 100%;
+    height: auto
+}
+
+button,
+input,
+select,
+textarea {
+    border-radius: 0
+}
+
+button,
+html input[type=button],
+input[type=reset],
+input[type=submit] {
+    -webkit-appearance: button
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    height: auto
+}
+
+input[type=search] {
+    -webkit-appearance: textfield;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box
+}
+
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration {
+    -webkit-appearance: none
+}

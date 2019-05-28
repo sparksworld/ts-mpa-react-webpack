@@ -6,6 +6,12 @@ const ClearWebpackPlugin = require('clean-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
+
+const pl = []
+if (process.env.npm_config_report) {
+    const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+   pl.push(new BundleAnalyzerPlugin())
+}
 module.exports = function(env, argv) {
     return merge(common(env, argv), {
         mode: 'production',
@@ -63,7 +69,8 @@ module.exports = function(env, argv) {
                 format: 'build [:bar] :percent (:elapsed seconds)',
                 clear: true,
                 width: 60
-            })
+            }),
+            ...pl
         ]
     })
 }
