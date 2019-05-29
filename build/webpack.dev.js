@@ -2,9 +2,9 @@ const path = require('path')
 const webpack = require('webpack')
 const common = require('./webpack.base')
 const merge = require('webpack-merge')
-const Dashboard = require('webpack-dashboard');
-const DashboardPlugin = require('webpack-dashboard/plugin')
-const dashboard = new Dashboard()
+// const Dashboard = require('webpack-dashboard');
+// const DashboardPlugin = require('webpack-dashboard/plugin')
+// const dashboard = new Dashboard()
 const ip = require('ip').address()
 module.exports = function(env, argv) {
     return merge(common(env, argv), {
@@ -24,9 +24,10 @@ module.exports = function(env, argv) {
             host: ip,
             contentBase: path.resolve(__dirname, `../${argv.dt || 'dist'}`),
             port: argv.PORT || 8080,
-            quiet: true,
+            // quiet: true,
             open: true,
-            hot: true
+            hot: true,
+            stats: 'errors-only'
         },
 
         plugins: [
