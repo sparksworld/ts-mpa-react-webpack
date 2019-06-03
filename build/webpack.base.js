@@ -49,7 +49,7 @@ module.exports = function(env, argv) {
                         {
                             loader: 'css-loader',
                             options: {
-                                sourceMap: true
+                                sourceMap: argv.mode == "development" ? true : false
                             }
                         }, {
                             loader: 'postcss-loader',
