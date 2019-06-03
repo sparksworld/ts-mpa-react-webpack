@@ -25,9 +25,15 @@ module.exports = function(env, argv) {
         module: {
             rules: [{
                     test: /\.tsx?$/,
-                    use: {
+                    use: [{
+                        loader: 'babel-loader',
+                        options: {
+                            exclude: /node_modules/,
+                            cacheDirectory: true
+                        }
+                    }, {
                         loader: 'ts-loader'
-                    }
+                    }]
                 },
                 {
                     test: /\.(js|jsx)$/,

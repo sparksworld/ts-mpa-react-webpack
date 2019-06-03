@@ -58,6 +58,8 @@
         "@types/react": "^16.8.17",
         "@types/react-dom": "^16.8.4",
         "axios": "^0.18.0",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6",
         "spark-deep": "^1.0.3"
     }
 }

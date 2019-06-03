@@ -3,6 +3,8 @@
         [
             "@babel/env",
             {
+                "useBuiltIns": "usage",
+                "corejs": "2",
                 "targets": {
                     "browsers": [
                         "iOS >= 7",

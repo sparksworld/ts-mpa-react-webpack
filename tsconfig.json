@@ -4,7 +4,7 @@
         "module": "commonjs",
         "target": "es5",
         "jsx": "react",
-        "allowJs": true,
+        "allowJs": false,
         "sourceMap": true,
         "moduleResolution": "node",
         "experimentalDecorators": true,
@@ -13,7 +13,9 @@
             "~": [
                 "src/*"
             ]
-        }
+        },
+        "declaration": true,
+        "declarationDir": "./@types" //单独为头文件指定存放的位置
     },
     "include": [
         "./src/**/*"
