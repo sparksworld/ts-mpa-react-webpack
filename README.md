@@ -31,8 +31,15 @@
     ----
     > 在```index.pug```中，获取编译环境请用`htmlWebpackPlugin.options.mode`
 
+`2019-6-4 09:22` 
 
-### 未完成功能
 - 命令行一键编译上传oss
+    做了一个命令行工具类，使用参考[spark-command](https://www.npmjs.com/package/spark-command)
+
+### 未完成功能 
+
+- ~~添加命令行控制编译和输出目录~~ 
+- ~~添加环境变量，区分生产和编译环境~~ 
+- ~~命令行一键编译上传oss~~ 
 
 > 使用中若遇到问题，请发邮件到[228436652@qq.com](https://mail.qq.com/),谢谢
