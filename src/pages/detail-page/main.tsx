@@ -5,14 +5,15 @@ import TodoStatus from './components/todo-status'
 import TodoForm from './components/todo-form'
 import api from './api'
 import './assets/sass/style.scss'
-
 declare module 'react' {
-  interface Component {
-    $axios: any
-  }
+    interface Component {
+        [x: string]: any
+    }
 }
 // api.getSearchType()
+
 Component.prototype.$axios = api
+
 class App extends Component<any, any> {
     constructor(props: any) {
         super(props);
