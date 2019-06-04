@@ -34,7 +34,8 @@
 `2019-6-4 09:22` 
 
 - 命令行一键编译上传oss
-    做了一个命令行工具类，使用参考[spark-command](https://www.npmjs.com/package/spark-command)
+
+    > 做了一个命令行工具类，使用参考[spark-command](https://www.npmjs.com/package/spark-command)
 
 ### 未完成功能 
 
