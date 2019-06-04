@@ -140,9 +140,9 @@ module.exports = function(env, argv) {
                 filename: "css/[name].[hash:8].css",
                 chunkFilename: "css/[id].[name].[chunkhash:8].css"
             }),
-            new webpack.DefinePlugin({
-                'INTERFACE': JSON.stringify(process.env)
-            }),
+            // new webpack.DefinePlugin({
+            //     'INTERFACE': JSON.stringify(process.env)
+            // }),
             ...plugins
         ]
     }
