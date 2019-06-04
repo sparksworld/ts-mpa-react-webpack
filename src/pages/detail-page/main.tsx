@@ -5,9 +5,6 @@ import TodoStatus from './components/todo-status'
 import TodoForm from './components/todo-form'
 import api from './api'
 import './assets/sass/style.scss'
-//http://www.wukai.me/simplest-react-todolist/
-// // @ts-ignore
-// // import test from "~/lib/test"
 
 declare module 'react' {
   interface Component {
