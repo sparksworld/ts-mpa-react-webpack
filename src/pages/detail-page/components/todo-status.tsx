@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 class TodoStatus extends Component<any, any> {
-    constructor(props) {
+    constructor(props: any) {
         super(props)
         this.state = {
             author: 'spark',
@@ -9,7 +9,7 @@ class TodoStatus extends Component<any, any> {
         }
     }
     private computCount(): number {
-        return this.props.allTask.filter((item) => {
+        return this.props.allTask.filter((item: { isChecked: any; }) => {
             return item.isChecked
         }).length
     }

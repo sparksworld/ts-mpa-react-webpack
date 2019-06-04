@@ -3,12 +3,12 @@ import deep from 'spark-deep'
 
 export default class Ajax {
     protected http: any
-    constructor(option) {
+    constructor(option: { baseURL: string; }) {
         this.http = axios.create({
             baseURL: option.baseURL
         })
 
-        this.http.interceptors.request.use(config => {
+        this.http.interceptors.request.use((config: any) => {
             config.params = deep({
                 test: 1
             }, config.params)
@@ -23,12 +23,12 @@ export default class Ajax {
             }
 
             return config
-        }, error => {
+        }, (error: any) => {
 
             return Promise.reject(error)
         })
 
-        this.http.interceptors.response.use(response => {
+        this.http.interceptors.response.use((response: any) => {
             const {
                 data
             }: any = response
@@ -37,16 +37,16 @@ export default class Ajax {
             } else {
                 return Promise.reject(data)
             }
-        }, error => {
+        }, (error: any) => {
             return Promise.reject(error)
         })
     }
-    protected get(api, params = {}) {
+    protected get(api: any, params = {}) {
         return this.http.get(api, {
             params: params
         })
     }
-    protected post(api, params = {}) {
+    protected post(api: any, params = {}) {
         return this.http.post(api, params)
     }
 }

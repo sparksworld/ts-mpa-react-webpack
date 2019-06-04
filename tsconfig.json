@@ -1,15 +1,17 @@
 {
     "compilerOptions": {
+        "noImplicitAny": true,
         "esModuleInterop": true,
         "module": "commonjs",
         "target": "es5",
         "jsx": "react",
         "allowJs": false,
-        "sourceMap": true,
+        "sourceMap": false,
         "moduleResolution": "node",
         "experimentalDecorators": true,
         "baseUrl": "./",
         "paths": {
+            "*": ["types/*"],
             "~": [
                 "./src/*"
             ]

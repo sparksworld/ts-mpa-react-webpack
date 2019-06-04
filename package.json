@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "",
     "main": "./src",
+    "typings": "types/app.d.ts",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "cross-var webpack-dev-server --mode development --config build/webpack.dev.js",

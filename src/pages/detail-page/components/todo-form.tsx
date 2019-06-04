@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
 class TodoForm extends Component<any, any> {
-    constructor(props) {
+    constructor(props: any) {
         super(props)
         this.state = {
             taskName: ''
         }
     }
-    private changeValue = (e) => {
+    private changeValue = (e: { target: any; }) => {
         let target = e.target
         this.setState({
             taskName: target.value

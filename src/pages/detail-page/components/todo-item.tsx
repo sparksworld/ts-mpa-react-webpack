@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 // import ReactDOM from 'react-dom'
 // console.log(React)
 class TodoItem extends Component<any, any> {
-    constructor(props) {
+    constructor(props: any) {
         super(props)
         this.state = {
             editContent: this.props.taskItem.taskName
         }
     }
-    private stateChange(i, t, e) {
+    private stateChange(i: any, t: string, e: { stopPropagation: () => void; }) {
         e.stopPropagation();
         this.props.stateChange(i, t, this.state.editContent)
         if(t != 'sure') {
@@ -17,10 +17,10 @@ class TodoItem extends Component<any, any> {
             })
         }
     }
-    private keyPress(e) {
+    private keyPress(e: any) {
         e.keyCode === 13 && this.stateChange(this.props.index, 'sure', e)
     }
-    private changText(e) {
+    private changText(e: { target: any; }) {
         let target = e.target
         this.setState({
             editContent: target.value

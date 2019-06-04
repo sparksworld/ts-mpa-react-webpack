@@ -11,7 +11,6 @@ declare module 'react' {
     }
 }
 // api.getSearchType()
-
 Component.prototype.$axios = api
 
 class App extends Component<any, any> {
@@ -41,7 +40,7 @@ class App extends Component<any, any> {
             }]
         }
     }
-    private addEvent = (p) => {
+    private addEvent = (p: { taskName: any; }) => {
         // console.log(p)
         let _tasks = this.state.tasks
         if (p.taskName) {
@@ -58,15 +57,15 @@ class App extends Component<any, any> {
 
     }
     protected handleChange(_index: number, _type: string, _content?: string) {
-        let runTask = {
-            delete: this.setState.bind(this, ({ tasks }) => {
+        let runTask: any = {
+            delete: this.setState.bind(this, ({ tasks }: any) => {
                 tasks.splice(_index, 1)
                 return {
                     tasks: tasks
                 }
             }),
-            active: this.setState.bind(this, (({ tasks }) => {
-                return tasks.map((item, i) => {
+            active: this.setState.bind(this, (({ tasks }: any) => {
+                return tasks.map((item: { isChecked: boolean; isEdit: boolean; }, i: number) => {
                     if (i == _index) {
                         item.isChecked = !item.isChecked
                         if (item.isEdit) {
@@ -77,8 +76,8 @@ class App extends Component<any, any> {
                     }
                 })
             })),
-            edit: this.setState.bind(this, ({ tasks }) => {
-                return tasks.map((item, i) => {
+            edit: this.setState.bind(this, ({ tasks }: any) => {
+                return tasks.map((item: { isEdit: boolean; }, i: number) => {
                     if (i == _index) {
                         item.isEdit = !item.isEdit
                     } else {
@@ -86,8 +85,8 @@ class App extends Component<any, any> {
                     }
                 })
             }),
-            sure: this.setState.bind(this, ({ tasks }) => {
-                return tasks.map((item, i) => {
+            sure: this.setState.bind(this, ({ tasks }: any) => {
+                return tasks.map((item: { taskName: string; isEdit: boolean; }, i: number) => {
                     if (i == _index) {
                         item.taskName = _content
                         item.isEdit = !item.isEdit
@@ -120,7 +119,7 @@ class App extends Component<any, any> {
                             ))
                     }</ul>
                 </div>
-                <TodoForm addEvent={(p) => this.addEvent(p)}></TodoForm>
+                <TodoForm addEvent={(p: any) => this.addEvent(p)}></TodoForm>
             </div>
         )
     }
