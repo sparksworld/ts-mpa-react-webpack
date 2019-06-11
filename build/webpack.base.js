@@ -16,7 +16,7 @@ module.exports = function(env, argv) {
             filename: `${name}.html`,
             mode: argv.mode,
             // inject: 'head', //js放到头部
-            chunks: [name, 'vendor', 'common']
+            chunks: [name, 'vendor', 'common', 'react', 'jquery']
         }))
         entry[name] = _path
     })
@@ -24,6 +24,15 @@ module.exports = function(env, argv) {
         entry: entry,
         module: {
             rules: [{
+                    test: require.resolve('jquery'),
+                    use: [{
+                        loader: 'expose-loader',
+                        options: 'jQuery'
+                    }, {
+                        loader: 'expose-loader',
+                        options: '$'
+                    }]
+                }, {
                     test: /\.tsx?$/,
                     use: [{
                         loader: 'babel-loader',
@@ -88,7 +97,7 @@ module.exports = function(env, argv) {
                         }
                     }]
                 }, {
-                    test: /\.(eot|woff2?|ttf|svg)$/,
+                    test: /\.(eot|woff2?|ttf)$/,
                     use: [{
                         loader: "url-loader",
                         options: {
@@ -109,6 +118,20 @@ module.exports = function(env, argv) {
                         maxInitialRequests: 5,
                         minSize: 0
                     },
+                    jquery: {
+                        test: /\/jquery\//,
+                        chunks: "initial",
+                        name: "jquery",
+                        priority: 20,
+                        enforce: true
+                    },
+                    react: {
+                        test: /\/react/,
+                        chunks: "initial",
+                        name: "react",
+                        priority: 20,
+                        enforce: true
+                    },
                     vendor: {
                         test: /\/node_modules\//,
                         chunks: "initial",
@@ -125,10 +148,10 @@ module.exports = function(env, argv) {
                 '~': path.resolve(__dirname, '../src')
             }
         },
-        externals: {
-            "react": "React",
-            "react-dom": "ReactDOM"
-        },
+        // externals: {
+        //     "react": "React",
+        //     "react-dom": "ReactDOM"
+        // },
 
         plugins: [
             new webpack.BannerPlugin(`Spark created at ${new Date()} \n`),
