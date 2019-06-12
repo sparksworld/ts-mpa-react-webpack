@@ -37,7 +37,8 @@ module.exports = function(env, argv) {
                     uglifyOptions: {
                         compress: {
                             unused: true,
-                            drop_debugger: true
+                            drop_debugger: true,
+                            drop_console: true
                         },
                         output: {
                             comments: /spark/gi
