@@ -38,7 +38,7 @@ module.exports = function(env, argv) {
                         compress: {
                             unused: true,
                             drop_debugger: true,
-                            drop_console: true
+                            drop_console: true /* 去除生产环境log输出 */
                         },
                         output: {
                             comments: /spark/gi
