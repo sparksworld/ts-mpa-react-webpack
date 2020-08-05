@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component } from "react";
 declare class TodoItem extends Component<any, any> {
     constructor(props: any);
     private stateChange;

@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component } from "react";
 declare class TodoForm extends Component<any, any> {
     constructor(props: any);
     private changeValue;
